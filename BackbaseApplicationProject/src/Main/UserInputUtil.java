@@ -1,67 +1,67 @@
 package Main;
-
+//Coding Conventions Check Bob Laramee's Coding conventions
+//Passed Rule 1 Method Length
+//Passed Rule 2 Indentation
+//Passed Rule 3 No line of Code exceeds 80 characters
+//Passed Rule 4 All class variables must start with two character sequence
+//Passed Rule 5 All class variables are accessed with accessor methods
+//Passed Rule 6 Accessor Methods come at the top
+//Passed Rule 7 Class Variables are private
+//Passed Rule 8 Method Naming public methods begin with an upper case letter
+			// 	Naming private methods with lower-case letter.
+//Passed Rule 9 Methods have no more than 5 parameters
+//Passed Rule 10 No Magic Numbers
 import java.io.File;
 import java.util.Scanner;
 
-public class UserInputUtil {
-	private String name;
-	private String surname;
-	private String inputCSVFile;
-	private String outputCSVFile;
+public class UserInputUtil 
+{
+	private String m_Name;
+	private String m_Surname;
+	private String m_InputCSVFile;
+	private String m_OutputCSVFile;
 	
 	public UserInputUtil(){
 		Scanner input = new Scanner(System.in);
 		
-		System.out.println("Welcome to Philip Moses Evans' Backbase application task");
-		this.name = UserInputUtil.inputString(input, "firstname");
-		this.surname = UserInputUtil.inputString(input, "surname");
-		this.inputCSVFile = UserInputUtil.inputFile(input);
-		this.outputCSVFile = UserInputUtil.inputString(input, "outputFile");
+		System.out.println("Welcome to Philip Moses Evans' Backbase application"
+		+ " task");
+		this.m_Name = UserInputUtil.InputString(input, "firstname");
+		this.m_Surname = UserInputUtil.InputString(input, "surname");
+		this.m_InputCSVFile = UserInputUtil.InputFile(input);
+		this.m_OutputCSVFile = UserInputUtil.InputString(input, "outputFile");
 		
 		input.close();
 	}
 	
 
 	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+		return m_Name;
 	}
 
 	public String getSurname() {
-		return surname;
-	}
-
-	public void setSurname(String surname) {
-		this.surname = surname;
+		return m_Surname;
 	}
 
 	public String getInputCSVFile() {
-		return inputCSVFile;
-	}
-
-	public void setInputCSVFile(String inputCSVFile) {
-		this.inputCSVFile = inputCSVFile;
+		return m_InputCSVFile;
 	}
 
 	public String getOutputCSVFile() {
-		return outputCSVFile;
+		return m_OutputCSVFile;
 	}
 
-	public void setOutputCSVFile(String outputCSVFile) {
-		this.outputCSVFile = outputCSVFile;
-	}
 
-	public static String inputString(Scanner in, String type){
+	private static String InputString(Scanner in, String type){
 		String outputString = "";
 		boolean hasNext = true;
 		do{
 			if (type.equals("firstname")){
-				System.out.println("Please enter the first name of the customer you wish to evaluate");
+				System.out.println("Please enter the firstname of the customer "
+				+ "you wish to evaluate");
 			}else if(type.equals("surname")){
-				System.out.println("Please enter the surname of the customer you wish to evaluate");
+				System.out.println("Please enter the surname of the customer "
+				+ "you wish to evaluate");
 			}else{
 				System.out.println("Please enter output CSV file name");
 			}
@@ -80,11 +80,12 @@ public class UserInputUtil {
 	
 	}
 	
-	private static String inputFile(Scanner in) {
+	private static String InputFile(Scanner in) {
 		Boolean fileExists = true;
 		String filename = "";
 		do{	
-			System.out.println("Please enter the name of the csv ledger input file you wish to evaluate");
+			System.out.println("Please enter the name of the csv ledger input "
+			+ "file you wish to evaluate");
 			if(in.hasNext()){
 				filename = in.next(); 
 				File maybeExists = new File(filename);
@@ -93,7 +94,8 @@ public class UserInputUtil {
 					filename = maybeExists.getName();
 					fileExists = true;
 				}else{
-					System.out.println("file " + filename + " has been not found try again");
+					System.out.println("file " + filename + " has been not "
+					+ "found try again");
 					fileExists = false;
 				}
 			}
