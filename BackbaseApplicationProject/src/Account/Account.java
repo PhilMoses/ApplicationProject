@@ -41,7 +41,7 @@ public abstract class Account
 	
 	/**
 	 * Accessor for the class variable which holds what type of Account this is
-	 * @return this current Account type of this account
+	 * @return the current AccountType of this account, it should be "ABSTRACT"
 	 */
 	public String getAccountType()
 	{

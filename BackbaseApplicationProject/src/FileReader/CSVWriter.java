@@ -18,13 +18,28 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import Transactions.Transaction;
-
+/**
+ * This is the CSV writer Class handles generating files and overwriting files 
+ * to output the result of the executeLedger function
+ * @author Philip Evans
+ *
+ */
 public class CSVWriter 
-{
+{	
+	/**
+	 * This method generates the CSV output file
+	 * first it checks if the file exists and then informs the user that it is
+	 * overwriting the file.
+	 * 
+	 * If the file isn't found then it will create the file 
+	 * @param ledger this is an ArrayList of Transactions usually the output
+	 * ledger
+	 * @param filename the filename of the file
+	 */
 	public static void generateOutputFile(ArrayList<Transaction> ledger, 
 	String filename)
 	{
-		String generateFileName = (filename+".csv");
+		String generateFileName = (filename);
 		File maybeExists = new File(generateFileName);
 		System.out.println("checking if file exists");
 		if (maybeExists.exists() == true){
@@ -33,7 +48,7 @@ public class CSVWriter
 		}else{
 			try{
 				maybeExists.createNewFile();
-				System.out.println("Generating file name is"+generateFileName);
+				System.out.println("Generating file name is "+generateFileName);
 			}catch(IOException e){
 				e.printStackTrace();
 			}
@@ -42,7 +57,13 @@ public class CSVWriter
 			
 		}
 	}
-
+	
+	/**
+	 * This is used in generating the file method generateOutPutFile
+	 * this writes what goes into the CSV file
+	 * @param ledger ArrayList of transactions usually the one executed in main
+	 * @param name the filename
+	 */
 	private static void saveCSV(ArrayList<Transaction> ledger, String name) 
 	{
 		try{
@@ -50,7 +71,6 @@ public class CSVWriter
 			os.print(("AccountID,AccountType,InitiatorTyper,DateTime"
 			+ ",TransactionValue"));
 			os.print("\n");
-			System.out.println("LEDGER SIZE IS " + ledger.size());
 			for(int i = 0; i < (ledger.size());){
 				os.print(ledger.get(i).getAccountID()+",");
 				os.print(ledger.get(i).getAccountType()+",");

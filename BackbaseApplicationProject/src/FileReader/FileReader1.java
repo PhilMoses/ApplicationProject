@@ -1,24 +1,27 @@
 package FileReader;
-//Coding Conventions Check Bob Laramee's Coding conventions
-//Passed Rule 1 Method Length
-//Passed Rule 2 Indentation
-//Passed Rule 3 No line of Code exceeds 80 characters
-//Passed Rule 4 All class variables must start with two character sequence
-//Passed Rule 5 All class variables are accessed with accessor methods
-//Passed Rule 6 Accessor Methods come at the top
-//Passed Rule 7 Class Variables are private
-//Passed Rule 8 Method Naming public methods begin with an upper case letter
-			// 	Naming private methods with lower-case letter.
-//Passed Rule 9 Methods have no more than 5 parameters
-//Passed Rule 10 No Magic Numbers
 import java.util.Scanner;
 import java.io.File;
 import java.util.ArrayList;
 import Transactions.Transaction;
 import java.io.FileNotFoundException;
-
+/**
+ * This is the FileReader class which is responsible for reading the csv file 
+ * the user has inputed
+ * @author Philip Evans
+ *
+ */
 public class FileReader1 
-{
+{	
+	/**
+	 * This method generates the ledger of the Customer it does this by 
+	 * making a new blank ledger and then searching through every line excluding
+	 * the first line of the csv file and then passing out the raw text data to 
+	 * the extractTransaction function which returns a transaction object. The
+	 * transaction is then added to the new ledger. This process keeps going until
+	 * the while loop doesn't find any data.
+	 * @param filename filename of input file passed on by the user
+	 * @return
+	 */
 	public static ArrayList<Transaction> generateLedger(String filename)
 	{
 		ArrayList<Transaction> ledger = new ArrayList<Transaction>();
@@ -44,7 +47,15 @@ public class FileReader1
 		return ledger;
 		
 	}
-	
+	/**
+	 * This Method is used to extract the information from the raw text data
+	 * from the csv file. It is passed a line of String separated by commas. 
+	 * Then it splices the string into data that be used to instantiate a 
+	 * transaction object.
+	 * 
+	 * @param data
+	 * @return
+	 */
 	public static Transaction extractTransaction(String data)
 	{
 		int AccountID = 0;
@@ -62,14 +73,6 @@ public class FileReader1
 		Transaction t = new Transaction(AccountID, AccountType, InitiatorType, 
 		DateTime, Value);
 		return t;
-		
-	}
-	
-	public static ArrayList<Transaction> addTransaction(ArrayList<Transaction> 
-	ledger, Transaction t)
-	{
-		ledger.add(t);
-		return ledger;
 		
 	}
 
